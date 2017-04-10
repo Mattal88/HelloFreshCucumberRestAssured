@@ -13,7 +13,7 @@
 
 ### mvn package
 
-### Check the output file in target/testoutput
+### Check the output file in target/testoutput directory
 
 ## Test classes for this test
 <br> stepdefinitions package consists The StepDefinition.java file where the steps are defined for the Gherkin code in the feature file, TestRunner.java is the test runner class
