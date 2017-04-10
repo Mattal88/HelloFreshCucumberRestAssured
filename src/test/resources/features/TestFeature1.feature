@@ -43,3 +43,5 @@ Feature: GET Calls for all countries url http://services.groupkt.com/country/get
      |               |SU|SUT      |
      |2134           |TH|THR      |
      |United Kingdom |GB|GBR      |
+     |CucumberLand   |CCR|CBR     |
+     |MockCountry    |MN |MOCK    | 
