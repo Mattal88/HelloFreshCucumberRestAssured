@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "classpath:features"
         ,glue={"stepdefinitions"}
+        ,tags = {"~@Ignore"}
 )
 public class TestRunner {
 }

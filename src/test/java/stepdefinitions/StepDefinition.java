@@ -89,6 +89,29 @@ public class StepDefinition {
 
     @When("^User Gives a payload with \"([^\"]*)\" , \"([^\"]*)\" and \"([^\"]*)\" And Posts to Particular Country URL$")
     public void user_Gives_a_payload_with_and_And_Posts_to_Particular_Country_URL(String arg1, String arg2, String arg3) throws Throwable {
+//        countryDetails = new HashMap<String, String>();
+//        countryDetails.put("name",arg1);
+//        countryDetails.put("alpha2_code",arg2);
+//        countryDetails.put("alpha3_code",arg3);
+//        String countryUrl=PARTICULAR_COUNTRY_URL.replaceFirst("\\{COUNTRY_ISO2CODE\\}",arg2);
+//
+//        response = given().contentType("application/json").body(countryDetails).when().post(BASE_URI+countryUrl);
+        System.out.println("Cucumber Test HF");
+    }
+
+    @Then("^The user GETS a response (\\d+)$")
+    public void the_user_GETS_a_response(int arg1) throws Throwable {
+        response.then().statusCode(arg1);
+    }
+
+    @Then("^The user validates the country present by doing a GET all countries and validate the entry in response \"([^\"]*)\"$")
+    public void the_user_validates_the_country_present_by_doing_a_GET_all_countries_and_validate_the_entry_in_response(String arg1) throws Throwable {
+        response =given().when().get(BASE_URI+ALL_COUNTRIES_URL);
+        response.then().body("RestResponse.result.alpha2_code",hasItems(arg1));
+    }
+
+    @When("^a User Gives a payload with \"([^\"]*)\" , \"([^\"]*)\" and \"([^\"]*)\" And Posts to Particular Country URL where the inputs are bad, the country is already present$")
+    public void a_User_Gives_a_payload_with_and_And_Posts_to_Particular_Country_URL_where_the_inputs_are_bad_the_country_is_already_present(String arg1, String arg2, String arg3) throws Throwable {
         countryDetails = new HashMap<String, String>();
         countryDetails.put("name",arg1);
         countryDetails.put("alpha2_code",arg2);
@@ -96,17 +119,12 @@ public class StepDefinition {
         String countryUrl=PARTICULAR_COUNTRY_URL.replaceFirst("\\{COUNTRY_ISO2CODE\\}",arg2);
 
         response = given().contentType("application/json").body(countryDetails).when().post(BASE_URI+countryUrl);
-
     }
 
-    @Then("^The user GETS a response whether The new country is added to the list and if the payload items are inappropriate type or Country is already present a BAD Request is given in response to the user$")
-    public void the_user_GETS_a_response_whether_The_new_country_is_added_to_the_list_and_if_the_payload_items_are_inappropriate_type_or_Country_is_already_present_a_BAD_Request_is_given_in_response_to_the_user() throws
-            Throwable {
-        int statusCode = response.statusCode();
-        //Test passes since current response is 405 or 404 for invalid urls , afte api is implemented make a check on 404 and 405 codes
-        Assert.assertTrue(statusCode==200 || statusCode == 400 || statusCode ==405 || statusCode == 404);
+    @Then("^The User receives a (\\d+) response for BAD REQUEST made$")
+    public void the_User_receives_a_response_for_BAD_REQUEST_made(int arg1) throws Throwable {
+        response.then().statusCode(arg1);
     }
-
 
 
 }

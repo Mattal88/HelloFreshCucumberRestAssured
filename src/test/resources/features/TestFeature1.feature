@@ -22,13 +22,23 @@ Feature: GET Calls for all countries url http://services.groupkt.com/country/get
     But with an in-existent country code
     Then The User Gets a 200 Response code and the response has message with json array "No matching country found for requested code"
 
-
-  Scenario Outline: POST method to add new countries
+  # Ignoring The Below Scenario's for POST as the feature is not developed and gives a 405 response
+  @Ignore
+  Scenario Outline: POST method to add new countries , All Countries have valid input types and semantics
     When User Gives a payload with "<name>" , "<alpha2_code>" and "<alpha3_code>" And Posts to Particular Country URL
-    Then The user GETS a response whether The new country is added to the list and if the payload items are inappropriate type or Country is already present a BAD Request is given in response to the user
+    Then The user GETS a response 200
+    And The user validates the country present by doing a GET all countries and validate the entry in response "<alpha2_code>"
    Examples:
      |name|alpha2_code|alpha3_code|
      |central country|CE|CES      |
+     |Meditterenian country|MO|MOC|
+
+  @Ignore
+  Scenario Outline:  POST method to add new countries , All inputs have semantic error or try to insert an already present country
+    When a User Gives a payload with "<name>" , "<alpha2_code>" and "<alpha3_code>" And Posts to Particular Country URL where the inputs are bad, the country is already present
+    Then The User receives a 400 response for BAD REQUEST made
+    Examples:
+     |name|alpha2_code|alpha3_code|
      |another country|  |  anc    |
      |               |SU|SUT      |
      |2134           |TH|THR      |
