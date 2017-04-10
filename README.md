@@ -14,5 +14,5 @@
 ### mvn package
 
 ## Test classes for this test
-<br> stepdefinitions package consists The StepDefinition.java file where the steps are defined for the Gherkin code in the feature file
+<br> stepdefinitions package consists The StepDefinition.java file where the steps are defined for the Gherkin code in the feature file, TestRunner.java is the test runner class
 <br> TestFeature1.feature file in resources folder is the feature file where the scenarios are described
