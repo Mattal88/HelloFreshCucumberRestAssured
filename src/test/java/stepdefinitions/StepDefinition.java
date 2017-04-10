@@ -89,14 +89,13 @@ public class StepDefinition {
 
     @When("^User Gives a payload with \"([^\"]*)\" , \"([^\"]*)\" and \"([^\"]*)\" And Posts to Particular Country URL$")
     public void user_Gives_a_payload_with_and_And_Posts_to_Particular_Country_URL(String arg1, String arg2, String arg3) throws Throwable {
-//        countryDetails = new HashMap<String, String>();
-//        countryDetails.put("name",arg1);
-//        countryDetails.put("alpha2_code",arg2);
-//        countryDetails.put("alpha3_code",arg3);
-//        String countryUrl=PARTICULAR_COUNTRY_URL.replaceFirst("\\{COUNTRY_ISO2CODE\\}",arg2);
-//
-//        response = given().contentType("application/json").body(countryDetails).when().post(BASE_URI+countryUrl);
-        System.out.println("Cucumber Test HF");
+        countryDetails = new HashMap<String, String>();
+        countryDetails.put("name",arg1);
+        countryDetails.put("alpha2_code",arg2);
+        countryDetails.put("alpha3_code",arg3);
+        String countryUrl=PARTICULAR_COUNTRY_URL.replaceFirst("\\{COUNTRY_ISO2CODE\\}",arg2);
+
+        response = given().contentType("application/json").body(countryDetails).when().post(BASE_URI+countryUrl);
     }
 
     @Then("^The user GETS a response (\\d+)$")
