@@ -1,4 +1,4 @@
-# The QA Automation Challenge for Hello Fresh Task 2 - Java, Rest Assured and Cucumber (API Test) - Java, Selenium Webdriver and Maven
+# The QA Automation Challenge for Hello Fresh Task 2 - Java, Rest Assured and Cucumber (API Test)
 
 ## Consists Tests for :
 <br>i)Get all countries and validate that US, DE and GB were returned in the response
@@ -12,6 +12,8 @@
 <br> Clone or download the project from github and fromm root directory where pom.xml is present run
 
 ### mvn package
+
+### Check the output file in target/testoutput
 
 ## Test classes for this test
 <br> stepdefinitions package consists The StepDefinition.java file where the steps are defined for the Gherkin code in the feature file, TestRunner.java is the test runner class

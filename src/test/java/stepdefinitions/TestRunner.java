@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         features = "classpath:features"
         ,glue={"stepdefinitions"}
         ,tags = {"~@Ignore"}
+        ,format = {"pretty", "html:target/testoutput"}
 )
 public class TestRunner {
 }
